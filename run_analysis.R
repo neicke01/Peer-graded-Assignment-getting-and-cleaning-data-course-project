@@ -28,7 +28,7 @@ extractdataset <- dataset[,c(1,2,extractids+2)]
 
 #add an activity column
 mergedData = merge(activities,extractdataset, by.x="activityid", by.y="activityid", all=TRUE)
-variablenames <-gsub("-","",features[extractids,2])
+variablenames <-gsub("()","",gsub("-","",features[extractids,2]),fixed = TRUE)
 
 #set the names of mean and std columns
 names(mergedData)[4:(length(variablenames)+3)] <-variablenames
